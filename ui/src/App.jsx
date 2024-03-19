@@ -94,23 +94,14 @@ class TicketToRide extends React.Component {
         <button ><a href="/#/blacklistt">Blacklist Traveller</a></button>
 	</div>
   <Router>
-    <div>
-	{
-		this.state.selector === 1? <Homepage />:<hr/>
-	}
-	{
-		this.state.selector === 2? <Display travellers={this.state.travellers} />:<hr/>
-	}
-	{
-		this.state.selector === 3? <Add bookTraveller={this.bookTraveller} />: <hr/>
-	}
-	{
-		this.state.selector === 4? <Delete deleteTraveller={this.deleteTraveller} />: <hr/>
-	}
-	{
-		this.state.selector === 5? <Blacklist blacklistTraveller={this.blacklistTraveller} />: <hr/>
-	}
-  </div>
+  <Switch>
+     <Redirect exact from="/" to="/home" />
+      <Route path="/home" component={Homepage} />
+      <Route path="/displayt" render={(props) => <Display {...props} travellers={this.state.travellers} />} />
+      <Route path="/addt" component={Add} />
+      <Route path="/blacklistt" render={(props) => <Blacklist {...props} blacklistTraveller={this.blacklistTraveller} />} />
+      <Route path="/deletet" component={Delete} />
+  </Switch>
   </Router>
       </div>
     );

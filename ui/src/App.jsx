@@ -5,6 +5,8 @@ import Add from './Add.jsx';
 import Display from './Display.jsx';
 import Delete from './Delete.jsx';
 import Blacklist from './Blacklist.jsx';
+import { HashRouter as Router } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Homepage extends React.Component {
 	constructor() {
@@ -83,13 +85,16 @@ class TicketToRide extends React.Component {
       <div>
         <h1>Ticket To Ride</h1>
 	<img src={train} />
+
 	<div>
-        <button onClick={()=>this.setSelector(1)}>Homepage</button>
-        <button onClick={()=>this.setSelector(2)}>Display Travellers</button>
-        <button onClick={()=>this.setSelector(3)}>Add Traveller</button>
-        <button onClick={()=>this.setSelector(4)}>Delete Traveller</button>
-        <button onClick={()=>this.setSelector(5)}>Blacklist Traveller</button>
+        <button ><a href="/#/home">Homepage</a></button>
+        <button ><a href="/#/displayt">Display Travellers</a></button>
+        <button ><a href="/#/addt">Add Traveller</a></button>
+        <button ><a href="/#/deletet">Delete Traveller</a></button>
+        <button ><a href="/#/blacklistt">Blacklist Traveller</a></button>
 	</div>
+  <Router>
+    <div>
 	{
 		this.state.selector === 1? <Homepage />:<hr/>
 	}
@@ -105,6 +110,8 @@ class TicketToRide extends React.Component {
 	{
 		this.state.selector === 5? <Blacklist blacklistTraveller={this.blacklistTraveller} />: <hr/>
 	}
+  </div>
+  </Router>
       </div>
     );
   }

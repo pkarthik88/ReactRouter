@@ -23,11 +23,5 @@ module.exports = {
 				          loader: 'file-loader',
 			      	    }
 			          ],
-		    },
-	  optimization: {
-		      splitChunks: {
-			            name: 'vendor',
-			            chunks: 'all',
-			          },
-		    },
+		    }
 };
